@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Practice</title>
+</head>
+<body>
+<h2>This is what the database has to say:</h2>
+
+<table border="1">
+    <tbody>
+        {% for r in results %}
+        <tr>
+            <td>{{ r[0] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html> 
