@@ -1,4 +1,4 @@
-name: ci
+name: sync_to_DH
 
 on:
   push:
