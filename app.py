@@ -2,11 +2,14 @@ import mysql.connector
 from flask import Flask, render_template
 app = Flask(__name__)
 
+# This will be updated with the "keyring" library
+mysql_pwd = 'p@ssw0rd1'
+
 def init_db():
     mydb = mysql.connector.connect(
-        host='mysqldb',
-        user='root',
-        password='p@ssw0rd1'
+        host = 'mysqldb',
+        user = 'root',
+        password = mysql_pwd
     )
     cursor = mydb.cursor()
     cursor.execute('DROP DATABASE IF EXISTS testDB')
@@ -14,10 +17,10 @@ def init_db():
     cursor.close()
 
     mydb = mysql.connector.connect(
-        host='mysqldb',
-        user='root',
-        password='p@ssw0rd1',
-        database='testDB'
+        host = 'mysqldb',
+        user = 'root',
+        password = mysql_pwd,
+        database = 'testDB'
     )
     cursor = mydb.cursor()
     cursor.execute('DROP TABLE IF EXISTS items')
@@ -34,10 +37,10 @@ def home():
     init_db()
 
     mydb = mysql.connector.connect(
-        host="mysqldb",
-        user="root",
-        password="p@ssw0rd1",
-        database="testDB"
+        host = "mysqldb",
+        user = "root",
+        password = mysql_pwd,
+        database = "testDB"
     )
     cursor = mydb.cursor()
     cursor.execute("SELECT * FROM items")
