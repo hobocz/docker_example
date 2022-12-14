@@ -1,11 +1,14 @@
+import os
 import mysql.connector
+from dotenv import load_dotenv
 from flask import Flask, render_template
 app = Flask(__name__)
 
-# This will be updated with the "keyring" library
-mysql_pwd = 'p@ssw0rd1'
+load_dotenv()
+mysql_pwd = os.getenv('MYSQL_ROOT_PASSWORD')
 
 def init_db():
+    # Create database
     mydb = mysql.connector.connect(
         host = 'mysqldb',
         user = 'root',
@@ -15,13 +18,14 @@ def init_db():
     cursor.execute('DROP DATABASE IF EXISTS testDB')
     cursor.execute('CREATE DATABASE testDB')
     cursor.close()
-
+    # Reconnect to new database
     mydb = mysql.connector.connect(
         host = 'mysqldb',
         user = 'root',
         password = mysql_pwd,
         database = 'testDB'
     )
+    # Create and populate table
     cursor = mydb.cursor()
     cursor.execute('DROP TABLE IF EXISTS items')
     cursor.execute('CREATE TABLE items (sentence VARCHAR(255))')
@@ -35,7 +39,6 @@ def init_db():
 @app.route('/')
 def home():
     init_db()
-
     mydb = mysql.connector.connect(
         host = "mysqldb",
         user = "root",
