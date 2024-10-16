@@ -1,4 +1,4 @@
-#### A simple example project meant to demonstrate using Docker.
+#### A simple Flask project meant to demonstrate using Docker.
 #### It includes GitHub to DockerHub integration as part of CI/CD.
 [python 3.10.8, Flask 2.2.2, mysql-connector-python 8.0.31]
 
@@ -11,5 +11,6 @@ demonstrate an understanding of Docker concepts.
 - The other container populates, queries, and displays DB data to a web page using Flask
 
 ### _Please Note:_
-Due to the database component, this will not run as-is. It requires a `.env` file with a valid MySQL password and data populated into the database.
+Due to the database component, this will not run as-is. It requires a method of database authentication 
+and testable data populated into the database.
 As with my other examples, this is meant to be a template from which to create a larger more robust system.
